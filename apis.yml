@@ -61,7 +61,11 @@ apis:
 common:
 - type: Website
   url: https://docs.confluent.io/platform/current/schema-registry/fundamentals/schema-evolution.html
-- type: JSON-LD
+- type: JSONSchema
+  url: json-schema/schema-evolution-change-schema.json
+- type: JSONStructure
+  url: json-structure/schema-evolution-compatibility-structure.json
+- type: JSONLDContext
   url: json-ld/schema-evolution-context.jsonld
 - type: Vocabulary
   url: vocabulary/schema-evolution-vocabulary.yml
