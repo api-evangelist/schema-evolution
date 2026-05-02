@@ -1,0 +1,87 @@
+{
+  "title": "Schema Compatibility Structure",
+  "description": "Structural documentation for the different types of schema compatibility and their implications for API and event streaming evolution.",
+  "compatibilityTypes": {
+    "backwardCompatible": {
+      "label": "Backward Compatible",
+      "definition": "New schema can read data written with the old schema. Consumers using the new schema can process messages produced with the old schema.",
+      "allowedChanges": [
+        "Add optional fields with defaults",
+        "Add new enum values",
+        "Remove required fields (making them optional)",
+        "Widen numeric types (int → long)"
+      ],
+      "forbiddenChanges": [
+        "Remove fields without defaults",
+        "Add required fields without defaults",
+        "Change field types incompatibly",
+        "Remove enum values"
+      ],
+      "useCase": "Producer updates happen before consumer updates"
+    },
+    "forwardCompatible": {
+      "label": "Forward Compatible",
+      "definition": "Old schema can read data written with the new schema. Consumers using the old schema can process messages produced with the new schema.",
+      "allowedChanges": [
+        "Remove optional fields",
+        "Add required fields (old consumer ignores unknown fields)",
+        "Remove enum values"
+      ],
+      "forbiddenChanges": [
+        "Add required fields to the reading schema",
+        "Remove fields that old consumers depend on"
+      ],
+      "useCase": "Consumer updates happen before producer updates"
+    },
+    "fullyCompatible": {
+      "label": "Fully Compatible",
+      "definition": "Satisfies both backward AND forward compatibility. Any version can read data written by any other version.",
+      "allowedChanges": [
+        "Add optional fields with defaults",
+        "Delete optional fields with defaults"
+      ],
+      "forbiddenChanges": [
+        "Any change that breaks backward or forward compatibility"
+      ],
+      "useCase": "Zero-downtime deployments with mixed-version nodes"
+    },
+    "breaking": {
+      "label": "Breaking Change",
+      "definition": "A change that is neither backward nor forward compatible. Requires coordinated deployment of all producers and consumers.",
+      "examples": [
+        "Rename a field",
+        "Change a field's type (string → integer)",
+        "Add a required field without a default",
+        "Remove a required field"
+      ],
+      "mitigations": [
+        "API versioning (v1, v2)",
+        "Field aliasing or transformation layers",
+        "Dual-write / dual-read migration periods",
+        "New topic/endpoint strategy"
+      ]
+    }
+  },
+  "evolutionStrategies": {
+    "addOnly": {
+      "label": "Add-Only Strategy",
+      "description": "Never remove or modify fields; only add new optional fields. The most conservative approach ensuring maximum compatibility.",
+      "tradeoff": "Schemas accumulate deprecated fields over time"
+    },
+    "versionedEndpoints": {
+      "label": "Versioned API Endpoints",
+      "description": "Create new API versions (/v2, /v3) for breaking changes. Maintain old versions until consumers migrate.",
+      "tradeoff": "Maintenance burden of supporting multiple versions simultaneously"
+    },
+    "fieldDeprecation": {
+      "label": "Field Deprecation Period",
+      "description": "Mark fields as deprecated and give consumers a migration window before removal.",
+      "tradeoff": "Requires consumer awareness and active migration"
+    },
+    "schemaRegistry": {
+      "label": "Schema Registry Enforcement",
+      "description": "Use a schema registry to enforce compatibility rules automatically on every schema change before promotion.",
+      "tradeoff": "Requires registry infrastructure and process discipline"
+    }
+  }
+}

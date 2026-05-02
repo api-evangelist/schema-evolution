@@ -1,0 +1,125 @@
+name: Schema Evolution Vocabulary
+description: Domain vocabulary for schema evolution, covering compatibility types, change categories, migration strategies, and tooling concepts used when managing schema changes over time in APIs and data streaming systems.
+url: https://github.com/api-evangelist/schema-evolution
+created: '2026-05-02'
+modified: '2026-05-02'
+tags:
+- Schema Evolution
+- Compatibility
+- Versioning
+- Vocabulary
+terms:
+- term: BackwardCompatibility
+  label: Backward Compatibility
+  definition: A new schema version can read data that was written using an older schema version. Consumers updated to the new schema can still process messages produced by the old producer. Safe changes include adding optional fields with defaults and widening numeric types.
+  tags:
+  - Compatibility
+  - Core Concept
+
+- term: ForwardCompatibility
+  label: Forward Compatibility
+  definition: An old schema version can read data that was written using a newer schema version. Consumers running the old schema can process messages produced by a new producer. Achieved by ensuring new fields can be ignored by old consumers.
+  tags:
+  - Compatibility
+  - Core Concept
+
+- term: FullCompatibility
+  label: Full Compatibility
+  definition: A schema change that satisfies both backward and forward compatibility simultaneously. Any version of the schema can read data written by any other version. The most restrictive compatibility level, typically limited to adding/removing optional fields with defaults.
+  tags:
+  - Compatibility
+  - Core Concept
+
+- term: BreakingChange
+  label: Breaking Change
+  definition: A schema change that is neither backward nor forward compatible — it breaks the ability of producers and consumers on different versions to communicate. Examples include removing a required field, renaming a field, or changing a field's type.
+  tags:
+  - Compatibility
+  - Risk
+
+- term: SchemaRegistry
+  label: Schema Registry
+  definition: A centralized service that stores and manages schema versions, enforces compatibility rules, and serves schemas to producers and consumers at runtime. The Confluent Schema Registry is the most widely used implementation, supporting Avro, JSON Schema, and Protobuf formats.
+  tags:
+  - Infrastructure
+  - Tooling
+
+- term: SchemaSubject
+  label: Schema Subject
+  definition: In Confluent Schema Registry, a named grouping of schema versions. By default, each Kafka topic has two subjects (key and value). Subject naming strategies (TopicNameStrategy, RecordNameStrategy, TopicRecordNameStrategy) control how schemas are associated with topics.
+  tags:
+  - Kafka
+  - Schema Registry
+
+- term: CompatibilityLevel
+  label: Compatibility Level
+  definition: A configuration setting in a schema registry that determines which schema changes are automatically approved or rejected. Common levels include BACKWARD, BACKWARD_TRANSITIVE, FORWARD, FORWARD_TRANSITIVE, FULL, FULL_TRANSITIVE, and NONE.
+  tags:
+  - Configuration
+  - Schema Registry
+
+- term: SchemaVersion
+  label: Schema Version
+  definition: A numbered revision of a schema definition stored in a schema registry. Each time a schema is updated and registered, it receives a new version number. Schema version history allows rollback and compatibility checking across versions.
+  tags:
+  - Versioning
+  - Core Concept
+
+- term: NullUnion
+  label: Null Union (Avro)
+  definition: In Apache Avro, a technique to make a field optional by declaring its type as a union of ["null", "actual-type"] with a default of null. This is the canonical Avro pattern for adding backward-compatible optional fields.
+  tags:
+  - Avro
+  - Pattern
+
+- term: DefaultValue
+  label: Default Value
+  definition: A value assigned to a field when it is absent from a serialized message. Default values are essential for schema evolution because they allow new fields to be added without breaking old consumers — the consumer uses the default when deserializing old messages that lack the new field.
+  tags:
+  - Avro
+  - Best Practice
+
+- term: TransitiveCompatibility
+  label: Transitive Compatibility
+  definition: A stricter compatibility mode where the new schema must be compatible with ALL previous versions (not just the latest one). Non-transitive compatibility only requires the new schema to be compatible with the immediately preceding version.
+  tags:
+  - Compatibility
+  - Schema Registry
+
+- term: FieldDeprecation
+  label: Field Deprecation
+  definition: The process of marking a field as no longer recommended for use, typically with a deprecation notice, before eventual removal. Deprecation periods give consumers time to migrate to new alternatives before the field is removed in a future breaking version.
+  tags:
+  - Migration
+  - Best Practice
+
+- term: DualWrite
+  label: Dual Write
+  definition: A migration pattern where producers write to both the old schema/topic and the new schema/topic simultaneously during a transition period. Consumers can migrate to the new schema without requiring a synchronized cutover.
+  tags:
+  - Migration
+  - Pattern
+
+- term: APIVersioning
+  label: API Versioning
+  definition: Introducing new API endpoint versions (e.g., /v2, /v3) to accommodate breaking schema changes while maintaining backward compatibility for existing consumers on older versions. Common strategies include URL versioning (/v2/users), header versioning (Accept: application/vnd.api+json;version=2), and query parameter versioning (?version=2).
+  tags:
+  - REST
+  - Migration
+  - Strategy
+
+- term: ContentNegotiation
+  label: Content Negotiation
+  definition: An HTTP mechanism where clients specify the schema format or version they accept using the Accept header, and servers respond with the appropriate schema version. Used to support multiple schema versions on a single endpoint without URL versioning.
+  tags:
+  - REST
+  - HTTP
+  - Strategy
+
+- term: SchemaMigration
+  label: Schema Migration
+  definition: A database or data store operation that transforms existing data from an old schema format to a new schema format. Common tools include Flyway, Liquibase (SQL databases), and Alembic (Python/SQLAlchemy). Migration scripts must account for null values, default values, and data type conversions.
+  tags:
+  - Database
+  - Migration
+  - Tooling

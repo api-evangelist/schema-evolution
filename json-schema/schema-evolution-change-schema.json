@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/api-evangelist/schema-evolution/blob/main/json-schema/schema-evolution-change-schema.json",
+  "title": "Schema Change",
+  "description": "Represents a single change made to a data schema between versions, including its type, scope, and compatibility impact.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for this change record"
+    },
+    "schemaName": {
+      "type": "string",
+      "description": "Name of the schema being changed"
+    },
+    "fromVersion": {
+      "type": "string",
+      "description": "Version number before this change"
+    },
+    "toVersion": {
+      "type": "string",
+      "description": "Version number after this change"
+    },
+    "changeType": {
+      "type": "string",
+      "description": "Type of schema change made",
+      "enum": [
+        "field-added",
+        "field-removed",
+        "field-renamed",
+        "field-type-changed",
+        "field-made-required",
+        "field-made-optional",
+        "field-default-added",
+        "field-default-changed",
+        "enum-value-added",
+        "enum-value-removed",
+        "schema-created",
+        "schema-deprecated",
+        "schema-removed",
+        "constraint-added",
+        "constraint-removed"
+      ]
+    },
+    "fieldPath": {
+      "type": "string",
+      "description": "JSON path to the field affected by this change (e.g., 'properties.user.email')"
+    },
+    "compatibilityImpact": {
+      "type": "string",
+      "description": "How this change affects schema compatibility",
+      "enum": ["backward-compatible", "forward-compatible", "fully-compatible", "breaking"]
+    },
+    "description": {
+      "type": "string",
+      "description": "Human-readable description of the change and its rationale"
+    },
+    "migrationRequired": {
+      "type": "boolean",
+      "description": "Whether data migration is required for existing records"
+    },
+    "migrationScript": {
+      "type": "string",
+      "description": "SQL, migration script, or transformation logic description"
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date when the change was applied"
+    },
+    "author": {
+      "type": "string",
+      "description": "Person or team responsible for the change"
+    }
+  },
+  "required": ["schemaName", "fromVersion", "toVersion", "changeType", "compatibilityImpact"]
+}

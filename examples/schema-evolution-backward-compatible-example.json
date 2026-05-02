@@ -1,0 +1,60 @@
+{
+  "title": "Schema Evolution - Backward Compatible Change",
+  "description": "Example of a backward compatible schema change: adding an optional field with a default value to an existing Avro schema. The new schema can read data written with the old schema.",
+  "schemaV1": {
+    "type": "record",
+    "name": "OrderEvent",
+    "namespace": "com.example.events",
+    "fields": [
+      { "name": "orderId", "type": "string" },
+      { "name": "customerId", "type": "string" },
+      { "name": "totalAmount", "type": "double" },
+      { "name": "status", "type": { "type": "enum", "name": "OrderStatus", "symbols": ["PENDING", "PROCESSING", "SHIPPED", "DELIVERED", "CANCELLED"] } },
+      { "name": "createdAt", "type": "string" }
+    ]
+  },
+  "schemaV2": {
+    "type": "record",
+    "name": "OrderEvent",
+    "namespace": "com.example.events",
+    "fields": [
+      { "name": "orderId", "type": "string" },
+      { "name": "customerId", "type": "string" },
+      { "name": "totalAmount", "type": "double" },
+      { "name": "status", "type": { "type": "enum", "name": "OrderStatus", "symbols": ["PENDING", "PROCESSING", "SHIPPED", "DELIVERED", "CANCELLED"] } },
+      { "name": "createdAt", "type": "string" },
+      {
+        "name": "shippingMethod",
+        "type": ["null", "string"],
+        "default": null,
+        "doc": "Shipping carrier and service level. Added in v2."
+      },
+      {
+        "name": "currency",
+        "type": "string",
+        "default": "USD",
+        "doc": "ISO 4217 currency code. Added in v2 with backward-compatible default."
+      }
+    ]
+  },
+  "changeRecord": {
+    "schemaName": "OrderEvent",
+    "fromVersion": "1.0.0",
+    "toVersion": "2.0.0",
+    "changes": [
+      {
+        "changeType": "field-added",
+        "fieldPath": "fields.shippingMethod",
+        "compatibilityImpact": "backward-compatible",
+        "description": "Added optional shippingMethod field with null default. Old messages that lack this field will deserialize with null value."
+      },
+      {
+        "changeType": "field-added",
+        "fieldPath": "fields.currency",
+        "compatibilityImpact": "backward-compatible",
+        "description": "Added currency field with default 'USD'. Old messages without this field will be read as USD."
+      }
+    ],
+    "migrationRequired": false
+  }
+}
