@@ -29,6 +29,8 @@ apis:
     url: https://docs.confluent.io/platform/current/schema-registry/develop/api.html
   - type: Reference
     url: https://docs.confluent.io/platform/current/schema-registry/fundamentals/schema-evolution.html
+  - url: openapi/schema-evolution-openapi.yml
+    type: OpenAPI
 
 - name: AWS Glue Schema Registry API
   description: AWS Glue Schema Registry is a feature that enables you to centrally discover, control, and evolve data stream schemas. The AWS Glue Schema Registry API supports creating, deleting, listing, updating, and fetching schemas, and it supports compatibility checking for Avro and JSON Schema formats.
