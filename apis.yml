@@ -1,7 +1,7 @@
 name: Schema Evolution
 description: Schema Evolution is the practice of managing changes to data schemas over time while preserving compatibility between producers and consumers. It covers backward compatibility, forward compatibility, full compatibility, breaking change detection, schema migration strategies, and versioning patterns for REST APIs, event streaming (Kafka/Avro), GraphQL, database schemas, and Protocol Buffers. Effective schema evolution is critical for maintaining API contracts and enabling independent deployment of distributed system components.
 url: https://github.com/api-evangelist/schema-evolution
-x-type: topic
+kind: topic
 tags:
 - Schema Evolution
 - Backward Compatibility
@@ -57,7 +57,7 @@ apis:
   properties:
   - type: Documentation
     url: https://www.apicur.io/registry/
-  - type: GitHub Repository
+  - type: GitHubRepository
     url: https://github.com/Apicurio/apicurio-registry
 
 common:
