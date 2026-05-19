@@ -1,0 +1,99 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Confluent Schema Registry API — Schemas
+  description: 'Confluent Schema Registry API — Schemas. 2 operations. Lead operation: Get a schema by id. Self-contained
+    Naftiko capability covering one Schema Evolution business surface.'
+  tags:
+  - Schema Evolution
+  - Schemas
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SCHEMA_EVOLUTION_API_KEY: SCHEMA_EVOLUTION_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: schema-evolution-schemas
+    baseUri: https://your-schema-registry-host
+    description: Confluent Schema Registry API — Schemas business capability. Self-contained, no shared references.
+    resources:
+    - name: schemas-ids-id
+      path: /schemas/ids/{id}
+      operations:
+      - name: get
+        method: GET
+        description: Get a schema by id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: schemas-types
+      path: /schemas/types
+      operations:
+      - name: get
+        method: GET
+        description: List supported schema types
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: schema-evolution-schemas-rest
+    port: 8080
+    description: REST adapter for Confluent Schema Registry API — Schemas. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/schemas/ids/{id}
+      name: schemas-ids-id
+      description: REST surface for schemas-ids-id.
+      operations:
+      - method: GET
+        name: get
+        description: Get a schema by id
+        call: schema-evolution-schemas.get
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/schemas/types
+      name: schemas-types
+      description: REST surface for schemas-types.
+      operations:
+      - method: GET
+        name: get
+        description: List supported schema types
+        call: schema-evolution-schemas.get
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: schema-evolution-schemas-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Confluent Schema Registry API — Schemas. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-schema-id
+      description: Get a schema by id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: schema-evolution-schemas.get
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-supported-schema-types
+      description: List supported schema types
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: schema-evolution-schemas.get
+      outputParameters:
+      - type: object
+        mapping: $.

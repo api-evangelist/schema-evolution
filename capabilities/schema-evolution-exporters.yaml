@@ -1,0 +1,67 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Confluent Schema Registry API — Exporters
+  description: 'Confluent Schema Registry API — Exporters. 1 operations. Lead operation: List schema exporters. Self-contained
+    Naftiko capability covering one Schema Evolution business surface.'
+  tags:
+  - Schema Evolution
+  - Exporters
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SCHEMA_EVOLUTION_API_KEY: SCHEMA_EVOLUTION_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: schema-evolution-exporters
+    baseUri: https://your-schema-registry-host
+    description: Confluent Schema Registry API — Exporters business capability. Self-contained, no shared references.
+    resources:
+    - name: exporters
+      path: /exporters
+      operations:
+      - name: get
+        method: GET
+        description: List schema exporters
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: schema-evolution-exporters-rest
+    port: 8080
+    description: REST adapter for Confluent Schema Registry API — Exporters. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/exporters
+      name: exporters
+      description: REST surface for exporters.
+      operations:
+      - method: GET
+        name: get
+        description: List schema exporters
+        call: schema-evolution-exporters.get
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: schema-evolution-exporters-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Confluent Schema Registry API — Exporters. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: list-schema-exporters
+      description: List schema exporters
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: schema-evolution-exporters.get
+      outputParameters:
+      - type: object
+        mapping: $.

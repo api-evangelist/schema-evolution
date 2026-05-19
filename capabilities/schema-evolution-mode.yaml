@@ -1,0 +1,102 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Confluent Schema Registry API — Mode
+  description: 'Confluent Schema Registry API — Mode. 2 operations. Lead operation: Get global mode. Self-contained Naftiko
+    capability covering one Schema Evolution business surface.'
+  tags:
+  - Schema Evolution
+  - Mode
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SCHEMA_EVOLUTION_API_KEY: SCHEMA_EVOLUTION_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: schema-evolution-mode
+    baseUri: https://your-schema-registry-host
+    description: Confluent Schema Registry API — Mode business capability. Self-contained, no shared references.
+    resources:
+    - name: mode
+      path: /mode
+      operations:
+      - name: get
+        method: GET
+        description: Get global mode
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: put
+        method: PUT
+        description: Update global mode
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: schema-evolution-mode-rest
+    port: 8080
+    description: REST adapter for Confluent Schema Registry API — Mode. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/mode
+      name: mode
+      description: REST surface for mode.
+      operations:
+      - method: GET
+        name: get
+        description: Get global mode
+        call: schema-evolution-mode.get
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: put
+        description: Update global mode
+        call: schema-evolution-mode.put
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: schema-evolution-mode-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Confluent Schema Registry API — Mode. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-global-mode
+      description: Get global mode
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: schema-evolution-mode.get
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-global-mode
+      description: Update global mode
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: schema-evolution-mode.put
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

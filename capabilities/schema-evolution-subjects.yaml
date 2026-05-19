@@ -1,0 +1,258 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Confluent Schema Registry API — Subjects
+  description: 'Confluent Schema Registry API — Subjects. 7 operations. Lead operation: List subjects. Self-contained Naftiko
+    capability covering one Schema Evolution business surface.'
+  tags:
+  - Schema Evolution
+  - Subjects
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SCHEMA_EVOLUTION_API_KEY: SCHEMA_EVOLUTION_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: schema-evolution-subjects
+    baseUri: https://your-schema-registry-host
+    description: Confluent Schema Registry API — Subjects business capability. Self-contained, no shared references.
+    resources:
+    - name: subjects
+      path: /subjects
+      operations:
+      - name: get
+        method: GET
+        description: List subjects
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: subjects-subject
+      path: /subjects/{subject}
+      operations:
+      - name: post
+        method: POST
+        description: Look up a schema under a subject
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: delete
+        method: DELETE
+        description: Delete a subject
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: subjects-subject-versions
+      path: /subjects/{subject}/versions
+      operations:
+      - name: get
+        method: GET
+        description: List versions of a subject
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: post
+        method: POST
+        description: Register a schema under a subject
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: subjects-subject-versions-version
+      path: /subjects/{subject}/versions/{version}
+      operations:
+      - name: get
+        method: GET
+        description: Get a specific version of a schema
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: delete
+        method: DELETE
+        description: Delete a specific version of a schema
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: schema-evolution-subjects-rest
+    port: 8080
+    description: REST adapter for Confluent Schema Registry API — Subjects. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/subjects
+      name: subjects
+      description: REST surface for subjects.
+      operations:
+      - method: GET
+        name: get
+        description: List subjects
+        call: schema-evolution-subjects.get
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subjects/{subject}
+      name: subjects-subject
+      description: REST surface for subjects-subject.
+      operations:
+      - method: POST
+        name: post
+        description: Look up a schema under a subject
+        call: schema-evolution-subjects.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete
+        description: Delete a subject
+        call: schema-evolution-subjects.delete
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subjects/{subject}/versions
+      name: subjects-subject-versions
+      description: REST surface for subjects-subject-versions.
+      operations:
+      - method: GET
+        name: get
+        description: List versions of a subject
+        call: schema-evolution-subjects.get
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: post
+        description: Register a schema under a subject
+        call: schema-evolution-subjects.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subjects/{subject}/versions/{version}
+      name: subjects-subject-versions-version
+      description: REST surface for subjects-subject-versions-version.
+      operations:
+      - method: GET
+        name: get
+        description: Get a specific version of a schema
+        call: schema-evolution-subjects.get
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete
+        description: Delete a specific version of a schema
+        call: schema-evolution-subjects.delete
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: schema-evolution-subjects-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Confluent Schema Registry API — Subjects. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: list-subjects
+      description: List subjects
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: schema-evolution-subjects.get
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: look-up-schema-under-subject
+      description: Look up a schema under a subject
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: schema-evolution-subjects.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-subject
+      description: Delete a subject
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: schema-evolution-subjects.delete
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-versions-subject
+      description: List versions of a subject
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: schema-evolution-subjects.get
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: register-schema-under-subject
+      description: Register a schema under a subject
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: schema-evolution-subjects.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-specific-version-schema
+      description: Get a specific version of a schema
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: schema-evolution-subjects.get
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-specific-version-schema
+      description: Delete a specific version of a schema
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: schema-evolution-subjects.delete
+      outputParameters:
+      - type: object
+        mapping: $.
