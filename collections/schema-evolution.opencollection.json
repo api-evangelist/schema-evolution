@@ -1,0 +1,438 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Confluent Schema Registry API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Subjects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List subjects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-schema-registry-host/subjects"
+          },
+          "docs": "List subjects"
+        },
+        {
+          "info": {
+            "name": "Look up a schema under a subject",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-schema-registry-host/subjects/:subject",
+            "params": [
+              {
+                "name": "subject",
+                "value": "",
+                "type": "path",
+                "description": "The subject name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Look up a schema under a subject"
+        },
+        {
+          "info": {
+            "name": "Delete a subject",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-schema-registry-host/subjects/:subject",
+            "params": [
+              {
+                "name": "subject",
+                "value": "",
+                "type": "path",
+                "description": "The subject name"
+              }
+            ]
+          },
+          "docs": "Delete a subject"
+        },
+        {
+          "info": {
+            "name": "List versions of a subject",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-schema-registry-host/subjects/:subject/versions",
+            "params": [
+              {
+                "name": "subject",
+                "value": "",
+                "type": "path",
+                "description": "The subject name"
+              }
+            ]
+          },
+          "docs": "List versions of a subject"
+        },
+        {
+          "info": {
+            "name": "Register a schema under a subject",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-schema-registry-host/subjects/:subject/versions",
+            "params": [
+              {
+                "name": "subject",
+                "value": "",
+                "type": "path",
+                "description": "The subject name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Register a schema under a subject"
+        },
+        {
+          "info": {
+            "name": "Get a specific version of a schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-schema-registry-host/subjects/:subject/versions/:version",
+            "params": [
+              {
+                "name": "subject",
+                "value": "",
+                "type": "path",
+                "description": "The subject name"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "A schema version (numeric or \"latest\")"
+              }
+            ]
+          },
+          "docs": "Get a specific version of a schema"
+        },
+        {
+          "info": {
+            "name": "Delete a specific version of a schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-schema-registry-host/subjects/:subject/versions/:version",
+            "params": [
+              {
+                "name": "subject",
+                "value": "",
+                "type": "path",
+                "description": "The subject name"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "A schema version (numeric or \"latest\")"
+              }
+            ]
+          },
+          "docs": "Delete a specific version of a schema"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Schemas",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a schema by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-schema-registry-host/schemas/ids/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a schema by id"
+        },
+        {
+          "info": {
+            "name": "List supported schema types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-schema-registry-host/schemas/types"
+          },
+          "docs": "List supported schema types"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Compatibility",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Test compatibility against a specific version",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-schema-registry-host/compatibility/subjects/:subject/versions/:version",
+            "params": [
+              {
+                "name": "subject",
+                "value": "",
+                "type": "path",
+                "description": "The subject name"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "A schema version (numeric or \"latest\")"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Test compatibility against a specific version"
+        },
+        {
+          "info": {
+            "name": "Test compatibility against all versions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-schema-registry-host/compatibility/subjects/:subject/versions",
+            "params": [
+              {
+                "name": "subject",
+                "value": "",
+                "type": "path",
+                "description": "The subject name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Test compatibility against all versions"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Config",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get global compatibility configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-schema-registry-host/config"
+          },
+          "docs": "Get global compatibility configuration"
+        },
+        {
+          "info": {
+            "name": "Update global compatibility configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://your-schema-registry-host/config",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update global compatibility configuration"
+        },
+        {
+          "info": {
+            "name": "Reset global compatibility configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-schema-registry-host/config"
+          },
+          "docs": "Reset global compatibility configuration"
+        },
+        {
+          "info": {
+            "name": "Get subject-level compatibility configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-schema-registry-host/config/:subject",
+            "params": [
+              {
+                "name": "subject",
+                "value": "",
+                "type": "path",
+                "description": "The subject name"
+              }
+            ]
+          },
+          "docs": "Get subject-level compatibility configuration"
+        },
+        {
+          "info": {
+            "name": "Update subject-level compatibility configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://your-schema-registry-host/config/:subject",
+            "params": [
+              {
+                "name": "subject",
+                "value": "",
+                "type": "path",
+                "description": "The subject name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update subject-level compatibility configuration"
+        },
+        {
+          "info": {
+            "name": "Reset subject-level compatibility configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-schema-registry-host/config/:subject",
+            "params": [
+              {
+                "name": "subject",
+                "value": "",
+                "type": "path",
+                "description": "The subject name"
+              }
+            ]
+          },
+          "docs": "Reset subject-level compatibility configuration"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Mode",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get global mode",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-schema-registry-host/mode"
+          },
+          "docs": "Get global mode"
+        },
+        {
+          "info": {
+            "name": "Update global mode",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://your-schema-registry-host/mode",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update global mode"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Contexts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List schema contexts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-schema-registry-host/contexts"
+          },
+          "docs": "List schema contexts"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Exporters",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List schema exporters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-schema-registry-host/exporters"
+          },
+          "docs": "List schema exporters"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
