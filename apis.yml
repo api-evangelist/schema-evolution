@@ -77,6 +77,10 @@ apis:
   - type: GitHubRepository
     url: https://github.com/Apicurio/apicurio-registry
 common:
+- type: VulnerabilityDisclosure
+  url: security/schema-evolution-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/schema-evolution-domain-security.yml
 - type: Website
   url: https://docs.confluent.io/platform/current/schema-registry/fundamentals/schema-evolution.html
 - type: JSONSchema
