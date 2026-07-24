@@ -1,0 +1,50 @@
+openapi: 3.1.0
+info:
+  title: Confluent Schema Registry Compatibility Mode API
+  description: Minimal OpenAPI description of the Confluent Schema Registry REST API used for schema evolution.
+  version: 1.0.0
+  x-generated-from: https://docs.confluent.io/platform/current/schema-registry/develop/api.html
+  x-generated-by: claude-crawl-2026-05-08
+servers:
+- url: https://your-schema-registry-host
+  description: Schema Registry host (replace with your deployment)
+tags:
+- name: Mode
+paths:
+  /mode:
+    get:
+      tags:
+      - Mode
+      summary: Get global mode
+      responses:
+        '200':
+          description: Mode value
+          content:
+            application/vnd.schemaregistry.v1+json:
+              schema:
+                $ref: '#/components/schemas/Mode'
+    put:
+      tags:
+      - Mode
+      summary: Update global mode
+      requestBody:
+        required: true
+        content:
+          application/vnd.schemaregistry.v1+json:
+            schema:
+              $ref: '#/components/schemas/Mode'
+      responses:
+        '200':
+          description: Updated mode
+          content:
+            application/vnd.schemaregistry.v1+json:
+              schema:
+                $ref: '#/components/schemas/Mode'
+components:
+  schemas:
+    Mode:
+      type: object
+      properties:
+        mode:
+          type: string
+      additionalProperties: true

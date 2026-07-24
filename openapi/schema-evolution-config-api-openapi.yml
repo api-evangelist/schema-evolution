@@ -1,0 +1,113 @@
+openapi: 3.1.0
+info:
+  title: Confluent Schema Registry Compatibility Config API
+  description: Minimal OpenAPI description of the Confluent Schema Registry REST API used for schema evolution.
+  version: 1.0.0
+  x-generated-from: https://docs.confluent.io/platform/current/schema-registry/develop/api.html
+  x-generated-by: claude-crawl-2026-05-08
+servers:
+- url: https://your-schema-registry-host
+  description: Schema Registry host (replace with your deployment)
+tags:
+- name: Config
+paths:
+  /config:
+    get:
+      tags:
+      - Config
+      summary: Get global compatibility configuration
+      responses:
+        '200':
+          description: Global config
+          content:
+            application/vnd.schemaregistry.v1+json:
+              schema:
+                $ref: '#/components/schemas/Config'
+    put:
+      tags:
+      - Config
+      summary: Update global compatibility configuration
+      requestBody:
+        required: true
+        content:
+          application/vnd.schemaregistry.v1+json:
+            schema:
+              $ref: '#/components/schemas/Config'
+      responses:
+        '200':
+          description: Updated config
+          content:
+            application/vnd.schemaregistry.v1+json:
+              schema:
+                $ref: '#/components/schemas/Config'
+    delete:
+      tags:
+      - Config
+      summary: Reset global compatibility configuration
+      responses:
+        '200':
+          description: Cleared config
+          content:
+            application/vnd.schemaregistry.v1+json:
+              schema:
+                $ref: '#/components/schemas/Config'
+  /config/{subject}:
+    parameters:
+    - $ref: '#/components/parameters/Subject'
+    get:
+      tags:
+      - Config
+      summary: Get subject-level compatibility configuration
+      responses:
+        '200':
+          description: Subject config
+          content:
+            application/vnd.schemaregistry.v1+json:
+              schema:
+                $ref: '#/components/schemas/Config'
+    put:
+      tags:
+      - Config
+      summary: Update subject-level compatibility configuration
+      requestBody:
+        required: true
+        content:
+          application/vnd.schemaregistry.v1+json:
+            schema:
+              $ref: '#/components/schemas/Config'
+      responses:
+        '200':
+          description: Updated subject config
+          content:
+            application/vnd.schemaregistry.v1+json:
+              schema:
+                $ref: '#/components/schemas/Config'
+    delete:
+      tags:
+      - Config
+      summary: Reset subject-level compatibility configuration
+      responses:
+        '200':
+          description: Cleared subject config
+          content:
+            application/vnd.schemaregistry.v1+json:
+              schema:
+                $ref: '#/components/schemas/Config'
+components:
+  parameters:
+    Subject:
+      name: subject
+      in: path
+      required: true
+      description: The subject name
+      schema:
+        type: string
+  schemas:
+    Config:
+      type: object
+      properties:
+        compatibility:
+          type: string
+        compatibilityLevel:
+          type: string
+      additionalProperties: true

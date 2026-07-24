@@ -1,0 +1,91 @@
+openapi: 3.1.0
+info:
+  title: Confluent Schema Registry Compatibility API
+  description: Minimal OpenAPI description of the Confluent Schema Registry REST API used for schema evolution.
+  version: 1.0.0
+  x-generated-from: https://docs.confluent.io/platform/current/schema-registry/develop/api.html
+  x-generated-by: claude-crawl-2026-05-08
+servers:
+- url: https://your-schema-registry-host
+  description: Schema Registry host (replace with your deployment)
+tags:
+- name: Compatibility
+paths:
+  /compatibility/subjects/{subject}/versions/{version}:
+    parameters:
+    - $ref: '#/components/parameters/Subject'
+    - $ref: '#/components/parameters/Version'
+    post:
+      tags:
+      - Compatibility
+      summary: Test compatibility against a specific version
+      requestBody:
+        $ref: '#/components/requestBodies/Schema'
+      responses:
+        '200':
+          description: Compatibility result
+          content:
+            application/vnd.schemaregistry.v1+json:
+              schema:
+                $ref: '#/components/schemas/CompatibilityResult'
+  /compatibility/subjects/{subject}/versions:
+    parameters:
+    - $ref: '#/components/parameters/Subject'
+    post:
+      tags:
+      - Compatibility
+      summary: Test compatibility against all versions
+      requestBody:
+        $ref: '#/components/requestBodies/Schema'
+      responses:
+        '200':
+          description: Compatibility result
+          content:
+            application/vnd.schemaregistry.v1+json:
+              schema:
+                $ref: '#/components/schemas/CompatibilityResult'
+components:
+  requestBodies:
+    Schema:
+      description: Schema definition
+      required: true
+      content:
+        application/vnd.schemaregistry.v1+json:
+          schema:
+            $ref: '#/components/schemas/SchemaString'
+  parameters:
+    Subject:
+      name: subject
+      in: path
+      required: true
+      description: The subject name
+      schema:
+        type: string
+    Version:
+      name: version
+      in: path
+      required: true
+      description: A schema version (numeric or "latest")
+      schema:
+        type: string
+  schemas:
+    CompatibilityResult:
+      type: object
+      properties:
+        is_compatible:
+          type: boolean
+      additionalProperties: true
+    SchemaString:
+      type: object
+      description: A schema definition.
+      properties:
+        schema:
+          type: string
+        schemaType:
+          type: string
+        references:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+      additionalProperties: true

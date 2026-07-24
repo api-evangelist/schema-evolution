@@ -1,0 +1,27 @@
+openapi: 3.1.0
+info:
+  title: Confluent Schema Registry Compatibility Contexts API
+  description: Minimal OpenAPI description of the Confluent Schema Registry REST API used for schema evolution.
+  version: 1.0.0
+  x-generated-from: https://docs.confluent.io/platform/current/schema-registry/develop/api.html
+  x-generated-by: claude-crawl-2026-05-08
+servers:
+- url: https://your-schema-registry-host
+  description: Schema Registry host (replace with your deployment)
+tags:
+- name: Contexts
+paths:
+  /contexts:
+    get:
+      tags:
+      - Contexts
+      summary: List schema contexts
+      responses:
+        '200':
+          description: Context list
+          content:
+            application/vnd.schemaregistry.v1+json:
+              schema:
+                type: array
+                items:
+                  type: string
