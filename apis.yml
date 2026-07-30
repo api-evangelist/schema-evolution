@@ -1,3 +1,16 @@
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/schema-evolution.png
 name: Schema Evolution
 description: >-
   Schema Evolution is the practice of managing changes to data schemas over time while preserving compatibility between
@@ -19,35 +32,11 @@ tags:
 created: '2026-05-02'
 modified: '2026-05-19'
 apis:
-- name: Confluent Schema Registry API
-  description: >-
-    The Confluent Schema Registry provides a serving layer for your metadata. It provides a RESTful interface for
-    storing and retrieving your Avro, JSON Schema, and Protobuf schemas. It stores a versioned history of all schemas
-    based on a specified subject name strategy, provides multiple compatibility settings and allows evolution of
-    schemas according to the configured compatibility setting. It is used by Kafka producers and consumers to enforce
-    schema compatibility when reading and writing Kafka messages.
-  humanURL: https://docs.confluent.io/platform/current/schema-registry/develop/api.html
-  baseURL: https://your-schema-registry-host/
-  tags:
-  - Schema Registry
-  - Confluent
-  - Kafka
-  - Avro
-  - Compatibility
-  properties:
-  - type: Documentation
-    url: https://docs.confluent.io/platform/current/schema-registry/develop/api.html
-  - type: Reference
-    url: https://docs.confluent.io/platform/current/schema-registry/fundamentals/schema-evolution.html
-  - url: openapi/schema-evolution-openapi.yml
-    type: OpenAPI
-  - url: graphql/schema-evolution-graphql.md
-    type: GraphQL
 - name: AWS Glue Schema Registry API
   description: >-
-    AWS Glue Schema Registry is a feature that enables you to centrally discover, control, and evolve data stream
-    schemas. The AWS Glue Schema Registry API supports creating, deleting, listing, updating, and fetching schemas,
-    and it supports compatibility checking for Avro and JSON Schema formats.
+    AWS Glue Schema Registry is a feature that enables you to centrally discover, control, and evolve
+    data stream schemas. The AWS Glue Schema Registry API supports creating, deleting, listing, updating,
+    and fetching schemas, and it supports compatibility checking for Avro and JSON Schema formats.
   humanURL: https://docs.aws.amazon.com/glue/latest/dg/schema-registry.html
   baseURL: https://glue.us-east-1.amazonaws.com
   tags:
@@ -60,10 +49,10 @@ apis:
     url: https://docs.aws.amazon.com/glue/latest/dg/schema-registry.html
 - name: Apicurio Schema Registry API
   description: >-
-    Apicurio Registry is a datastore for standard event schemas and API designs. Apicurio Registry enables you to add,
-    update, and remove artifacts from the registry using a REST API interface. It supports Apache Avro, JSON Schema,
-    Protobuf, GraphQL SDL, and more, with configurable compatibility rules including backward, forward, and full
-    compatibility.
+    Apicurio Registry is a datastore for standard event schemas and API designs. Apicurio Registry enables
+    you to add, update, and remove artifacts from the registry using a REST API interface. It supports
+    Apache Avro, JSON Schema, Protobuf, GraphQL SDL, and more, with configurable compatibility rules including
+    backward, forward, and full compatibility.
   humanURL: https://www.apicur.io/registry/
   baseURL: https://registry.example.com/apis/registry/v2
   tags:
@@ -76,6 +65,125 @@ apis:
     url: https://www.apicur.io/registry/
   - type: GitHubRepository
     url: https://github.com/Apicurio/apicurio-registry
+- aid: schema-evolution:schema-evolution-compatibility-api
+  name: Schema Evolution Compatibility API
+  description: The Compatibility API from Schema Evolution — 2 operation(s) for compatibility.
+  humanURL: https://docs.confluent.io/platform/current/schema-registry/develop/api.html
+  baseURL: https://your-schema-registry-host/
+  tags:
+  - Compatibility
+  properties:
+  - type: OpenAPI
+    url: openapi/schema-evolution-compatibility-api-openapi.yml
+  - type: Documentation
+    url: https://docs.confluent.io/platform/current/schema-registry/develop/api.html
+  - type: Reference
+    url: >-
+      https://docs.confluent.io/platform/current/schema-registry/fundamentals/schema-evolution.html
+  - type: GraphQL
+    url: graphql/schema-evolution-graphql.md
+- aid: schema-evolution:schema-evolution-config-api
+  name: Schema Evolution Config API
+  description: The Config API from Schema Evolution — 2 operation(s) for config.
+  humanURL: https://docs.confluent.io/platform/current/schema-registry/develop/api.html
+  baseURL: https://your-schema-registry-host/
+  tags:
+  - Config
+  properties:
+  - type: OpenAPI
+    url: openapi/schema-evolution-config-api-openapi.yml
+  - type: Documentation
+    url: https://docs.confluent.io/platform/current/schema-registry/develop/api.html
+  - type: Reference
+    url: >-
+      https://docs.confluent.io/platform/current/schema-registry/fundamentals/schema-evolution.html
+  - type: GraphQL
+    url: graphql/schema-evolution-graphql.md
+- aid: schema-evolution:schema-evolution-contexts-api
+  name: Schema Evolution Contexts API
+  description: The Contexts API from Schema Evolution — 1 operation(s) for contexts.
+  humanURL: https://docs.confluent.io/platform/current/schema-registry/develop/api.html
+  baseURL: https://your-schema-registry-host/
+  tags:
+  - Contexts
+  properties:
+  - type: OpenAPI
+    url: openapi/schema-evolution-contexts-api-openapi.yml
+  - type: Documentation
+    url: https://docs.confluent.io/platform/current/schema-registry/develop/api.html
+  - type: Reference
+    url: >-
+      https://docs.confluent.io/platform/current/schema-registry/fundamentals/schema-evolution.html
+  - type: GraphQL
+    url: graphql/schema-evolution-graphql.md
+- aid: schema-evolution:schema-evolution-exporters-api
+  name: Schema Evolution Exporters API
+  description: The Exporters API from Schema Evolution — 1 operation(s) for exporters.
+  humanURL: https://docs.confluent.io/platform/current/schema-registry/develop/api.html
+  baseURL: https://your-schema-registry-host/
+  tags:
+  - Exporters
+  properties:
+  - type: OpenAPI
+    url: openapi/schema-evolution-exporters-api-openapi.yml
+  - type: Documentation
+    url: https://docs.confluent.io/platform/current/schema-registry/develop/api.html
+  - type: Reference
+    url: >-
+      https://docs.confluent.io/platform/current/schema-registry/fundamentals/schema-evolution.html
+  - type: GraphQL
+    url: graphql/schema-evolution-graphql.md
+- aid: schema-evolution:schema-evolution-mode-api
+  name: Schema Evolution Mode API
+  description: The Mode API from Schema Evolution — 1 operation(s) for mode.
+  humanURL: https://docs.confluent.io/platform/current/schema-registry/develop/api.html
+  baseURL: https://your-schema-registry-host/
+  tags:
+  - Mode
+  properties:
+  - type: OpenAPI
+    url: openapi/schema-evolution-mode-api-openapi.yml
+  - type: Documentation
+    url: https://docs.confluent.io/platform/current/schema-registry/develop/api.html
+  - type: Reference
+    url: >-
+      https://docs.confluent.io/platform/current/schema-registry/fundamentals/schema-evolution.html
+  - type: GraphQL
+    url: graphql/schema-evolution-graphql.md
+- aid: schema-evolution:schema-evolution-schemas-api
+  name: Schema Evolution Schemas API
+  description: The Schemas API from Schema Evolution — 2 operation(s) for schemas.
+  humanURL: https://docs.confluent.io/platform/current/schema-registry/develop/api.html
+  baseURL: https://your-schema-registry-host/
+  tags:
+  - Schemas
+  properties:
+  - type: OpenAPI
+    url: openapi/schema-evolution-schemas-api-openapi.yml
+  - type: Documentation
+    url: https://docs.confluent.io/platform/current/schema-registry/develop/api.html
+  - type: Reference
+    url: >-
+      https://docs.confluent.io/platform/current/schema-registry/fundamentals/schema-evolution.html
+  - type: GraphQL
+    url: graphql/schema-evolution-graphql.md
+- aid: schema-evolution:schema-evolution-subjects-api
+  name: Schema Evolution Subjects API
+  description: The Subjects API from Schema Evolution — 4 operation(s) for subjects.
+  humanURL: https://docs.confluent.io/platform/current/schema-registry/develop/api.html
+  baseURL: https://your-schema-registry-host/
+  tags:
+  - Subjects
+  properties:
+  - type: OpenAPI
+    url: openapi/schema-evolution-subjects-api-openapi.yml
+  - type: Documentation
+    url: https://docs.confluent.io/platform/current/schema-registry/develop/api.html
+  - type: Reference
+    url: >-
+      https://docs.confluent.io/platform/current/schema-registry/fundamentals/schema-evolution.html
+  - type: GraphQL
+    url: graphql/schema-evolution-graphql.md
 common:
 - type: AgenticAccess
   url: agentic-access/schema-evolution-agentic-access.yml
