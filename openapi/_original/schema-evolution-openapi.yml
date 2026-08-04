@@ -1,0 +1,379 @@
+openapi: 3.1.0
+info:
+  title: Confluent Schema Registry API
+  description: Minimal OpenAPI description of the Confluent Schema Registry REST API used for schema evolution.
+  version: "1.0.0"
+  x-generated-from: https://docs.confluent.io/platform/current/schema-registry/develop/api.html
+  x-generated-by: claude-crawl-2026-05-08
+servers:
+  - url: https://your-schema-registry-host
+    description: Schema Registry host (replace with your deployment)
+tags:
+  - name: Subjects
+  - name: Schemas
+  - name: Compatibility
+  - name: Config
+  - name: Mode
+  - name: Contexts
+  - name: Exporters
+paths:
+  /subjects:
+    get:
+      tags: [Subjects]
+      summary: List subjects
+      responses:
+        '200':
+          description: A list of subject names
+          content:
+            application/vnd.schemaregistry.v1+json:
+              schema:
+                type: array
+                items:
+                  type: string
+  /subjects/{subject}:
+    parameters:
+      - $ref: '#/components/parameters/Subject'
+    post:
+      tags: [Subjects]
+      summary: Look up a schema under a subject
+      requestBody:
+        $ref: '#/components/requestBodies/Schema'
+      responses:
+        '200':
+          description: Schema metadata
+          content:
+            application/vnd.schemaregistry.v1+json:
+              schema:
+                $ref: '#/components/schemas/SchemaMetadata'
+    delete:
+      tags: [Subjects]
+      summary: Delete a subject
+      responses:
+        '200':
+          description: Versions deleted
+          content:
+            application/vnd.schemaregistry.v1+json:
+              schema:
+                type: array
+                items:
+                  type: integer
+  /subjects/{subject}/versions:
+    parameters:
+      - $ref: '#/components/parameters/Subject'
+    get:
+      tags: [Subjects]
+      summary: List versions of a subject
+      responses:
+        '200':
+          description: Version list
+          content:
+            application/vnd.schemaregistry.v1+json:
+              schema:
+                type: array
+                items:
+                  type: integer
+    post:
+      tags: [Subjects]
+      summary: Register a schema under a subject
+      requestBody:
+        $ref: '#/components/requestBodies/Schema'
+      responses:
+        '200':
+          description: Registered schema id
+          content:
+            application/vnd.schemaregistry.v1+json:
+              schema:
+                $ref: '#/components/schemas/SchemaId'
+  /subjects/{subject}/versions/{version}:
+    parameters:
+      - $ref: '#/components/parameters/Subject'
+      - $ref: '#/components/parameters/Version'
+    get:
+      tags: [Subjects]
+      summary: Get a specific version of a schema
+      responses:
+        '200':
+          description: Schema version
+          content:
+            application/vnd.schemaregistry.v1+json:
+              schema:
+                $ref: '#/components/schemas/SchemaMetadata'
+    delete:
+      tags: [Subjects]
+      summary: Delete a specific version of a schema
+      responses:
+        '200':
+          description: Deleted version number
+          content:
+            application/vnd.schemaregistry.v1+json:
+              schema:
+                type: integer
+  /schemas/ids/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      tags: [Schemas]
+      summary: Get a schema by id
+      responses:
+        '200':
+          description: Schema string
+          content:
+            application/vnd.schemaregistry.v1+json:
+              schema:
+                $ref: '#/components/schemas/SchemaString'
+  /schemas/types:
+    get:
+      tags: [Schemas]
+      summary: List supported schema types
+      responses:
+        '200':
+          description: Supported schema types
+          content:
+            application/vnd.schemaregistry.v1+json:
+              schema:
+                type: array
+                items:
+                  type: string
+  /compatibility/subjects/{subject}/versions/{version}:
+    parameters:
+      - $ref: '#/components/parameters/Subject'
+      - $ref: '#/components/parameters/Version'
+    post:
+      tags: [Compatibility]
+      summary: Test compatibility against a specific version
+      requestBody:
+        $ref: '#/components/requestBodies/Schema'
+      responses:
+        '200':
+          description: Compatibility result
+          content:
+            application/vnd.schemaregistry.v1+json:
+              schema:
+                $ref: '#/components/schemas/CompatibilityResult'
+  /compatibility/subjects/{subject}/versions:
+    parameters:
+      - $ref: '#/components/parameters/Subject'
+    post:
+      tags: [Compatibility]
+      summary: Test compatibility against all versions
+      requestBody:
+        $ref: '#/components/requestBodies/Schema'
+      responses:
+        '200':
+          description: Compatibility result
+          content:
+            application/vnd.schemaregistry.v1+json:
+              schema:
+                $ref: '#/components/schemas/CompatibilityResult'
+  /config:
+    get:
+      tags: [Config]
+      summary: Get global compatibility configuration
+      responses:
+        '200':
+          description: Global config
+          content:
+            application/vnd.schemaregistry.v1+json:
+              schema:
+                $ref: '#/components/schemas/Config'
+    put:
+      tags: [Config]
+      summary: Update global compatibility configuration
+      requestBody:
+        required: true
+        content:
+          application/vnd.schemaregistry.v1+json:
+            schema:
+              $ref: '#/components/schemas/Config'
+      responses:
+        '200':
+          description: Updated config
+          content:
+            application/vnd.schemaregistry.v1+json:
+              schema:
+                $ref: '#/components/schemas/Config'
+    delete:
+      tags: [Config]
+      summary: Reset global compatibility configuration
+      responses:
+        '200':
+          description: Cleared config
+          content:
+            application/vnd.schemaregistry.v1+json:
+              schema:
+                $ref: '#/components/schemas/Config'
+  /config/{subject}:
+    parameters:
+      - $ref: '#/components/parameters/Subject'
+    get:
+      tags: [Config]
+      summary: Get subject-level compatibility configuration
+      responses:
+        '200':
+          description: Subject config
+          content:
+            application/vnd.schemaregistry.v1+json:
+              schema:
+                $ref: '#/components/schemas/Config'
+    put:
+      tags: [Config]
+      summary: Update subject-level compatibility configuration
+      requestBody:
+        required: true
+        content:
+          application/vnd.schemaregistry.v1+json:
+            schema:
+              $ref: '#/components/schemas/Config'
+      responses:
+        '200':
+          description: Updated subject config
+          content:
+            application/vnd.schemaregistry.v1+json:
+              schema:
+                $ref: '#/components/schemas/Config'
+    delete:
+      tags: [Config]
+      summary: Reset subject-level compatibility configuration
+      responses:
+        '200':
+          description: Cleared subject config
+          content:
+            application/vnd.schemaregistry.v1+json:
+              schema:
+                $ref: '#/components/schemas/Config'
+  /mode:
+    get:
+      tags: [Mode]
+      summary: Get global mode
+      responses:
+        '200':
+          description: Mode value
+          content:
+            application/vnd.schemaregistry.v1+json:
+              schema:
+                $ref: '#/components/schemas/Mode'
+    put:
+      tags: [Mode]
+      summary: Update global mode
+      requestBody:
+        required: true
+        content:
+          application/vnd.schemaregistry.v1+json:
+            schema:
+              $ref: '#/components/schemas/Mode'
+      responses:
+        '200':
+          description: Updated mode
+          content:
+            application/vnd.schemaregistry.v1+json:
+              schema:
+                $ref: '#/components/schemas/Mode'
+  /contexts:
+    get:
+      tags: [Contexts]
+      summary: List schema contexts
+      responses:
+        '200':
+          description: Context list
+          content:
+            application/vnd.schemaregistry.v1+json:
+              schema:
+                type: array
+                items:
+                  type: string
+  /exporters:
+    get:
+      tags: [Exporters]
+      summary: List schema exporters
+      responses:
+        '200':
+          description: Exporter list
+          content:
+            application/vnd.schemaregistry.v1+json:
+              schema:
+                type: array
+                items:
+                  type: string
+components:
+  parameters:
+    Subject:
+      name: subject
+      in: path
+      required: true
+      description: The subject name
+      schema:
+        type: string
+    Version:
+      name: version
+      in: path
+      required: true
+      description: A schema version (numeric or "latest")
+      schema:
+        type: string
+  requestBodies:
+    Schema:
+      description: Schema definition
+      required: true
+      content:
+        application/vnd.schemaregistry.v1+json:
+          schema:
+            $ref: '#/components/schemas/SchemaString'
+  schemas:
+    SchemaString:
+      type: object
+      description: A schema definition.
+      properties:
+        schema:
+          type: string
+        schemaType:
+          type: string
+        references:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+      additionalProperties: true
+    SchemaId:
+      type: object
+      properties:
+        id:
+          type: integer
+      additionalProperties: true
+    SchemaMetadata:
+      type: object
+      properties:
+        subject:
+          type: string
+        id:
+          type: integer
+        version:
+          type: integer
+        schema:
+          type: string
+        schemaType:
+          type: string
+      additionalProperties: true
+    CompatibilityResult:
+      type: object
+      properties:
+        is_compatible:
+          type: boolean
+      additionalProperties: true
+    Config:
+      type: object
+      properties:
+        compatibility:
+          type: string
+        compatibilityLevel:
+          type: string
+      additionalProperties: true
+    Mode:
+      type: object
+      properties:
+        mode:
+          type: string
+      additionalProperties: true

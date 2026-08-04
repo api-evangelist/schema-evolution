@@ -1,0 +1,26 @@
+{
+  "provider": "schema-evolution",
+  "sources": [
+    "schema-evolution-compatibility-api-openapi.yml",
+    "schema-evolution-config-api-openapi.yml",
+    "schema-evolution-contexts-api-openapi.yml",
+    "schema-evolution-exporters-api-openapi.yml",
+    "schema-evolution-mode-api-openapi.yml",
+    "schema-evolution-schemas-api-openapi.yml",
+    "schema-evolution-subjects-api-openapi.yml"
+  ],
+  "outputs": [
+    "schema-evolution-compatibility-api-openapi.yml",
+    "schema-evolution-config-api-openapi.yml",
+    "schema-evolution-contexts-api-openapi.yml",
+    "schema-evolution-exporters-api-openapi.yml",
+    "schema-evolution-mode-api-openapi.yml",
+    "schema-evolution-schemas-api-openapi.yml",
+    "schema-evolution-subjects-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
