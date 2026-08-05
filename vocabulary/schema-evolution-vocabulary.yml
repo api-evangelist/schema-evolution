@@ -102,7 +102,7 @@ terms:
 
 - term: APIVersioning
   label: API Versioning
-  definition: Introducing new API endpoint versions (e.g., /v2, /v3) to accommodate breaking schema changes while maintaining backward compatibility for existing consumers on older versions. Common strategies include URL versioning (/v2/users), header versioning (Accept: application/vnd.api+json;version=2), and query parameter versioning (?version=2).
+  definition: "Introducing new API endpoint versions (e.g., /v2, /v3) to accommodate breaking schema changes while maintaining backward compatibility for existing consumers on older versions. Common strategies include URL versioning (/v2/users), header versioning (Accept: application/vnd.api+json;version=2), and query parameter versioning (?version=2)."
   tags:
   - REST
   - Migration
