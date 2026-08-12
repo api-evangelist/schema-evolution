@@ -185,6 +185,9 @@ apis:
   - type: GraphQL
     url: graphql/schema-evolution-graphql.md
 common:
+- type: License
+  name: Apache-2.0
+  url: https://github.com/Apicurio/apicurio-registry/blob/main/LICENSE
 - type: AgenticAccess
   url: agentic-access/schema-evolution-agentic-access.yml
 - type: VulnerabilityDisclosure
