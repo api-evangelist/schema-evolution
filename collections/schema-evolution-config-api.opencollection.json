@@ -1,0 +1,116 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Confluent Schema Registry Compatibility Config API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Config",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get global compatibility configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-schema-registry-host/config"
+          },
+          "docs": "Get global compatibility configuration"
+        },
+        {
+          "info": {
+            "name": "Update global compatibility configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://your-schema-registry-host/config",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update global compatibility configuration"
+        },
+        {
+          "info": {
+            "name": "Reset global compatibility configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-schema-registry-host/config"
+          },
+          "docs": "Reset global compatibility configuration"
+        },
+        {
+          "info": {
+            "name": "Get subject-level compatibility configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-schema-registry-host/config/:subject",
+            "params": [
+              {
+                "name": "subject",
+                "value": "",
+                "type": "path",
+                "description": "The subject name"
+              }
+            ]
+          },
+          "docs": "Get subject-level compatibility configuration"
+        },
+        {
+          "info": {
+            "name": "Update subject-level compatibility configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://your-schema-registry-host/config/:subject",
+            "params": [
+              {
+                "name": "subject",
+                "value": "",
+                "type": "path",
+                "description": "The subject name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update subject-level compatibility configuration"
+        },
+        {
+          "info": {
+            "name": "Reset subject-level compatibility configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-schema-registry-host/config/:subject",
+            "params": [
+              {
+                "name": "subject",
+                "value": "",
+                "type": "path",
+                "description": "The subject name"
+              }
+            ]
+          },
+          "docs": "Reset subject-level compatibility configuration"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

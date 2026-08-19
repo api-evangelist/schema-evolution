@@ -1,0 +1,99 @@
+{
+  "item": [
+    {
+      "id": "5d7d78c6-f0d5-4c10-8130-644a57f176c7",
+      "name": "Contexts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2bfec026-ceb3-41e6-bcfa-9af4a74daa50",
+          "name": "List schema contexts",
+          "request": {
+            "name": "List schema contexts",
+            "description": {},
+            "url": {
+              "path": [
+                "contexts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.schemaregistry.v1+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "54da54f9-7885-4e4b-b45a-c4d40d16322b",
+              "name": "Context list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contexts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.schemaregistry.v1+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.schemaregistry.v1+json"
+                }
+              ],
+              "body": "[\n  \"string\",\n  \"string\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://your-schema-registry-host",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "296374ee-853f-4a2a-9718-9893a1604dd5",
+    "name": "Confluent Schema Registry Compatibility Contexts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Minimal OpenAPI description of the Confluent Schema Registry REST API used for schema evolution.",
+      "type": "text/plain"
+    }
+  }
+}

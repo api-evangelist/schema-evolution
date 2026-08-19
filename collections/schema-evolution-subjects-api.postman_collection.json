@@ -1,0 +1,675 @@
+{
+  "item": [
+    {
+      "id": "ad6c74be-338b-4ddc-9b81-fac685927853",
+      "name": "Subjects",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8669d90e-cb89-4fbc-996c-5ea1a0965fb5",
+          "name": "List subjects",
+          "request": {
+            "name": "List subjects",
+            "description": {},
+            "url": {
+              "path": [
+                "subjects"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.schemaregistry.v1+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "46aa2277-e8b8-4497-b219-a8be6268ca09",
+              "name": "A list of subject names",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subjects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.schemaregistry.v1+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.schemaregistry.v1+json"
+                }
+              ],
+              "body": "[\n  \"string\",\n  \"string\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "871f4811-902e-4f32-84a9-db13379d4cc2",
+          "name": "Look up a schema under a subject",
+          "request": {
+            "name": "Look up a schema under a subject",
+            "description": {},
+            "url": {
+              "path": [
+                "subjects",
+                ":subject"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subject",
+                  "description": "(Required) The subject name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.schemaregistry.v1+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.schemaregistry.v1+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"schema\": \"<string>\",\n  \"schemaType\": \"<string>\",\n  \"references\": [\n    {\n      \"key_0\": true,\n      \"key_1\": true\n    },\n    {\n      \"key_0\": 4232,\n      \"key_1\": \"string\"\n    }\n  ],\n  \"key_0\": 7194.041413780411,\n  \"key_1\": 7701\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b66551c4-f205-4f6d-a06f-5117fa7bc3c9",
+              "name": "Schema metadata",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subjects",
+                    ":subject"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subject",
+                      "description": "(Required) The subject name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.schemaregistry.v1+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.schemaregistry.v1+json"
+                }
+              ],
+              "body": "{\n  \"subject\": \"string\",\n  \"id\": 4095,\n  \"version\": 7690,\n  \"schema\": \"string\",\n  \"schemaType\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0232fb9e-db00-45d1-a410-c2a5bf7a8b4c",
+          "name": "Delete a subject",
+          "request": {
+            "name": "Delete a subject",
+            "description": {},
+            "url": {
+              "path": [
+                "subjects",
+                ":subject"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subject",
+                  "description": "(Required) The subject name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.schemaregistry.v1+json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "93176f1c-f795-44ec-a604-ef1c233c1b15",
+              "name": "Versions deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subjects",
+                    ":subject"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subject",
+                      "description": "(Required) The subject name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.schemaregistry.v1+json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.schemaregistry.v1+json"
+                }
+              ],
+              "body": "[\n  9770,\n  4673\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "53c4bda5-3c8a-4721-82f9-3c344c0af2a5",
+          "name": "List versions of a subject",
+          "request": {
+            "name": "List versions of a subject",
+            "description": {},
+            "url": {
+              "path": [
+                "subjects",
+                ":subject",
+                "versions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subject",
+                  "description": "(Required) The subject name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.schemaregistry.v1+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "be5246dd-4508-44c5-8109-871c45cb1181",
+              "name": "Version list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subjects",
+                    ":subject",
+                    "versions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subject",
+                      "description": "(Required) The subject name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.schemaregistry.v1+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.schemaregistry.v1+json"
+                }
+              ],
+              "body": "[\n  9770,\n  4673\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fb768013-e63e-4972-abf4-7235275e9934",
+          "name": "Register a schema under a subject",
+          "request": {
+            "name": "Register a schema under a subject",
+            "description": {},
+            "url": {
+              "path": [
+                "subjects",
+                ":subject",
+                "versions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subject",
+                  "description": "(Required) The subject name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.schemaregistry.v1+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.schemaregistry.v1+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"schema\": \"<string>\",\n  \"schemaType\": \"<string>\",\n  \"references\": [\n    {\n      \"key_0\": true,\n      \"key_1\": \"string\",\n      \"key_2\": true,\n      \"key_3\": 5201,\n      \"key_4\": 1128\n    },\n    {\n      \"key_0\": false,\n      \"key_1\": \"string\",\n      \"key_2\": 7177.5778676740965\n    }\n  ],\n  \"key_0\": false,\n  \"key_1\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "413d295c-f7b0-4b6b-9a98-527647b7430f",
+              "name": "Registered schema id",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subjects",
+                    ":subject",
+                    "versions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subject",
+                      "description": "(Required) The subject name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.schemaregistry.v1+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.schemaregistry.v1+json"
+                }
+              ],
+              "body": "{\n  \"id\": 9081,\n  \"key_0\": true,\n  \"key_1\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ed398a67-d022-4137-9fbd-aa887b0329b4",
+          "name": "Get a specific version of a schema",
+          "request": {
+            "name": "Get a specific version of a schema",
+            "description": {},
+            "url": {
+              "path": [
+                "subjects",
+                ":subject",
+                "versions",
+                ":version"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subject",
+                  "description": "(Required) The subject name"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "version",
+                  "description": "(Required) A schema version (numeric or \"latest\")"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.schemaregistry.v1+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "45a5f9f9-ef8a-4b24-bcab-a4f66251acdf",
+              "name": "Schema version",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subjects",
+                    ":subject",
+                    "versions",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subject",
+                      "description": "(Required) The subject name"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) A schema version (numeric or \"latest\")"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.schemaregistry.v1+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.schemaregistry.v1+json"
+                }
+              ],
+              "body": "{\n  \"subject\": \"string\",\n  \"id\": 4095,\n  \"version\": 7690,\n  \"schema\": \"string\",\n  \"schemaType\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4a6bb730-4b88-416b-868c-8937caf6bdc3",
+          "name": "Delete a specific version of a schema",
+          "request": {
+            "name": "Delete a specific version of a schema",
+            "description": {},
+            "url": {
+              "path": [
+                "subjects",
+                ":subject",
+                "versions",
+                ":version"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subject",
+                  "description": "(Required) The subject name"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "version",
+                  "description": "(Required) A schema version (numeric or \"latest\")"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.schemaregistry.v1+json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7214521f-06ae-442b-ab28-c98bb7c86d0d",
+              "name": "Deleted version number",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subjects",
+                    ":subject",
+                    "versions",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subject",
+                      "description": "(Required) The subject name"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) A schema version (numeric or \"latest\")"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.schemaregistry.v1+json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.schemaregistry.v1+json"
+                }
+              ],
+              "body": "9206",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://your-schema-registry-host",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d4188389-3635-4cac-8809-3df49ae39eb1",
+    "name": "Confluent Schema Registry Compatibility Subjects API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Minimal OpenAPI description of the Confluent Schema Registry REST API used for schema evolution.",
+      "type": "text/plain"
+    }
+  }
+}

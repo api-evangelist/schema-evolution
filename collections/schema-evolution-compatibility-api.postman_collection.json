@@ -1,0 +1,252 @@
+{
+  "item": [
+    {
+      "id": "5b343773-2116-46ef-827b-cadae8d76168",
+      "name": "Compatibility",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3d450cf9-7c05-455f-8caa-78b4479c43d4",
+          "name": "Test compatibility against a specific version",
+          "request": {
+            "name": "Test compatibility against a specific version",
+            "description": {},
+            "url": {
+              "path": [
+                "compatibility",
+                "subjects",
+                ":subject",
+                "versions",
+                ":version"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subject",
+                  "description": "(Required) The subject name"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "version",
+                  "description": "(Required) A schema version (numeric or \"latest\")"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.schemaregistry.v1+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.schemaregistry.v1+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"schema\": \"<string>\",\n  \"schemaType\": \"<string>\",\n  \"references\": [\n    {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    {\n      \"key_0\": 7633,\n      \"key_1\": 7481\n    }\n  ],\n  \"key_0\": 2501.8212160478793,\n  \"key_1\": 6483.910131634467,\n  \"key_2\": 483\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7fcd9a56-9461-49bf-bf5e-f49c3ed89ac3",
+              "name": "Compatibility result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "compatibility",
+                    "subjects",
+                    ":subject",
+                    "versions",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subject",
+                      "description": "(Required) The subject name"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) A schema version (numeric or \"latest\")"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.schemaregistry.v1+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.schemaregistry.v1+json"
+                }
+              ],
+              "body": "{\n  \"is_compatible\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "04c5b7c4-cf96-46c8-af91-3fe5329d8641",
+          "name": "Test compatibility against all versions",
+          "request": {
+            "name": "Test compatibility against all versions",
+            "description": {},
+            "url": {
+              "path": [
+                "compatibility",
+                "subjects",
+                ":subject",
+                "versions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subject",
+                  "description": "(Required) The subject name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.schemaregistry.v1+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.schemaregistry.v1+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"schema\": \"<string>\",\n  \"schemaType\": \"<string>\",\n  \"references\": [\n    {\n      \"key_0\": \"string\",\n      \"key_1\": 3566.3191778940904,\n      \"key_2\": 7284\n    },\n    {\n      \"key_0\": 7540,\n      \"key_1\": 6848.021713607661,\n      \"key_2\": 8356.945089625458,\n      \"key_3\": false,\n      \"key_4\": 3610\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6353ad68-9831-4702-a455-f0105e2935e0",
+              "name": "Compatibility result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "compatibility",
+                    "subjects",
+                    ":subject",
+                    "versions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subject",
+                      "description": "(Required) The subject name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.schemaregistry.v1+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.schemaregistry.v1+json"
+                }
+              ],
+              "body": "{\n  \"is_compatible\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://your-schema-registry-host",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c9387529-cc30-4fbd-adb8-28b4afcf9d2a",
+    "name": "Confluent Schema Registry Compatibility API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Minimal OpenAPI description of the Confluent Schema Registry REST API used for schema evolution.",
+      "type": "text/plain"
+    }
+  }
+}

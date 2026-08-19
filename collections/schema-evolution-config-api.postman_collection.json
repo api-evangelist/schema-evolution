@@ -1,0 +1,530 @@
+{
+  "item": [
+    {
+      "id": "142c36d8-04a1-4534-b31a-91f18c55f60f",
+      "name": "Config",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "18346a19-7264-4189-9022-b7ef3a7ddcd8",
+          "name": "Get global compatibility configuration",
+          "request": {
+            "name": "Get global compatibility configuration",
+            "description": {},
+            "url": {
+              "path": [
+                "config"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.schemaregistry.v1+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f1b4a9f6-adae-4abe-a7a1-d3cc4d3e492a",
+              "name": "Global config",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.schemaregistry.v1+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.schemaregistry.v1+json"
+                }
+              ],
+              "body": "{\n  \"compatibility\": \"string\",\n  \"compatibilityLevel\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "67aca273-0845-4606-9d9a-6ac1c24385a2",
+          "name": "Update global compatibility configuration",
+          "request": {
+            "name": "Update global compatibility configuration",
+            "description": {},
+            "url": {
+              "path": [
+                "config"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.schemaregistry.v1+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.schemaregistry.v1+json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"compatibility\": \"<string>\",\n  \"compatibilityLevel\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dc51189e-0359-4d54-a8b7-8b4ff912ff94",
+              "name": "Updated config",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.schemaregistry.v1+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"compatibility\": \"<string>\",\n  \"compatibilityLevel\": \"<string>\",\n  \"key_0\": \"string\",\n  \"key_1\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.schemaregistry.v1+json"
+                }
+              ],
+              "body": "{\n  \"compatibility\": \"string\",\n  \"compatibilityLevel\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bedab4a6-0fc8-46c2-846e-2f3b3492b98e",
+          "name": "Reset global compatibility configuration",
+          "request": {
+            "name": "Reset global compatibility configuration",
+            "description": {},
+            "url": {
+              "path": [
+                "config"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.schemaregistry.v1+json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0eda7a31-1bfb-43d5-9b24-a47bb1cd0ae8",
+              "name": "Cleared config",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.schemaregistry.v1+json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.schemaregistry.v1+json"
+                }
+              ],
+              "body": "{\n  \"compatibility\": \"string\",\n  \"compatibilityLevel\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dc61d0e2-4fd9-416a-b6d0-d3b0230ac7f0",
+          "name": "Get subject-level compatibility configuration",
+          "request": {
+            "name": "Get subject-level compatibility configuration",
+            "description": {},
+            "url": {
+              "path": [
+                "config",
+                ":subject"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subject",
+                  "description": "(Required) The subject name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.schemaregistry.v1+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "18ac77de-0ad2-4428-9162-ba942fbf705c",
+              "name": "Subject config",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "config",
+                    ":subject"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subject",
+                      "description": "(Required) The subject name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.schemaregistry.v1+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.schemaregistry.v1+json"
+                }
+              ],
+              "body": "{\n  \"compatibility\": \"string\",\n  \"compatibilityLevel\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9654eaa3-6161-4ec8-bb9b-4a7f162f443b",
+          "name": "Update subject-level compatibility configuration",
+          "request": {
+            "name": "Update subject-level compatibility configuration",
+            "description": {},
+            "url": {
+              "path": [
+                "config",
+                ":subject"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subject",
+                  "description": "(Required) The subject name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.schemaregistry.v1+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.schemaregistry.v1+json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"compatibility\": \"<string>\",\n  \"compatibilityLevel\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2cb45e7d-acae-4d54-b4d6-a88a402bb81f",
+              "name": "Updated subject config",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "config",
+                    ":subject"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subject",
+                      "description": "(Required) The subject name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.schemaregistry.v1+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"compatibility\": \"<string>\",\n  \"compatibilityLevel\": \"<string>\",\n  \"key_0\": \"string\",\n  \"key_1\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.schemaregistry.v1+json"
+                }
+              ],
+              "body": "{\n  \"compatibility\": \"string\",\n  \"compatibilityLevel\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0cc1ad9c-a090-44b8-b923-836f8a08db68",
+          "name": "Reset subject-level compatibility configuration",
+          "request": {
+            "name": "Reset subject-level compatibility configuration",
+            "description": {},
+            "url": {
+              "path": [
+                "config",
+                ":subject"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subject",
+                  "description": "(Required) The subject name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.schemaregistry.v1+json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "00a3e707-cf0a-41bb-8771-2eaa138cbd57",
+              "name": "Cleared subject config",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "config",
+                    ":subject"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subject",
+                      "description": "(Required) The subject name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.schemaregistry.v1+json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.schemaregistry.v1+json"
+                }
+              ],
+              "body": "{\n  \"compatibility\": \"string\",\n  \"compatibilityLevel\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://your-schema-registry-host",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ad72095a-b542-484f-8625-aae974bd9fa7",
+    "name": "Confluent Schema Registry Compatibility Config API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Minimal OpenAPI description of the Confluent Schema Registry REST API used for schema evolution.",
+      "type": "text/plain"
+    }
+  }
+}

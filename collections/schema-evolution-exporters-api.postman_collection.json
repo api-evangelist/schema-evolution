@@ -1,0 +1,99 @@
+{
+  "item": [
+    {
+      "id": "5d1730c6-5dbe-4715-93b4-5416c6440965",
+      "name": "Exporters",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ef4ff5b6-547e-4167-9552-e50378084911",
+          "name": "List schema exporters",
+          "request": {
+            "name": "List schema exporters",
+            "description": {},
+            "url": {
+              "path": [
+                "exporters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.schemaregistry.v1+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dd658755-8706-4294-be8f-cca5b728ae88",
+              "name": "Exporter list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "exporters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.schemaregistry.v1+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.schemaregistry.v1+json"
+                }
+              ],
+              "body": "[\n  \"string\",\n  \"string\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://your-schema-registry-host",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0731982d-3fe5-4ede-81bb-d724fc38c797",
+    "name": "Confluent Schema Registry Compatibility Exporters API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Minimal OpenAPI description of the Confluent Schema Registry REST API used for schema evolution.",
+      "type": "text/plain"
+    }
+  }
+}

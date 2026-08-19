@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Confluent Schema Registry Compatibility API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Compatibility",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Test compatibility against a specific version",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-schema-registry-host/compatibility/subjects/:subject/versions/:version",
+            "params": [
+              {
+                "name": "subject",
+                "value": "",
+                "type": "path",
+                "description": "The subject name"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "A schema version (numeric or \"latest\")"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Test compatibility against a specific version"
+        },
+        {
+          "info": {
+            "name": "Test compatibility against all versions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-schema-registry-host/compatibility/subjects/:subject/versions",
+            "params": [
+              {
+                "name": "subject",
+                "value": "",
+                "type": "path",
+                "description": "The subject name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Test compatibility against all versions"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

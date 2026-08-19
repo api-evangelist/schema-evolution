@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Confluent Schema Registry Compatibility Exporters API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Exporters",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List schema exporters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-schema-registry-host/exporters"
+          },
+          "docs": "List schema exporters"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

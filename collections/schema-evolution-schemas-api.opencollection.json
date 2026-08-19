@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Confluent Schema Registry Compatibility Schemas API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Schemas",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a schema by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-schema-registry-host/schemas/ids/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a schema by id"
+        },
+        {
+          "info": {
+            "name": "List supported schema types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-schema-registry-host/schemas/types"
+          },
+          "docs": "List supported schema types"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

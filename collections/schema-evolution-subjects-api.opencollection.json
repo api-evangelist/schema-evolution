@@ -1,0 +1,163 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Confluent Schema Registry Compatibility Subjects API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Subjects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List subjects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-schema-registry-host/subjects"
+          },
+          "docs": "List subjects"
+        },
+        {
+          "info": {
+            "name": "Look up a schema under a subject",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-schema-registry-host/subjects/:subject",
+            "params": [
+              {
+                "name": "subject",
+                "value": "",
+                "type": "path",
+                "description": "The subject name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Look up a schema under a subject"
+        },
+        {
+          "info": {
+            "name": "Delete a subject",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-schema-registry-host/subjects/:subject",
+            "params": [
+              {
+                "name": "subject",
+                "value": "",
+                "type": "path",
+                "description": "The subject name"
+              }
+            ]
+          },
+          "docs": "Delete a subject"
+        },
+        {
+          "info": {
+            "name": "List versions of a subject",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-schema-registry-host/subjects/:subject/versions",
+            "params": [
+              {
+                "name": "subject",
+                "value": "",
+                "type": "path",
+                "description": "The subject name"
+              }
+            ]
+          },
+          "docs": "List versions of a subject"
+        },
+        {
+          "info": {
+            "name": "Register a schema under a subject",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-schema-registry-host/subjects/:subject/versions",
+            "params": [
+              {
+                "name": "subject",
+                "value": "",
+                "type": "path",
+                "description": "The subject name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Register a schema under a subject"
+        },
+        {
+          "info": {
+            "name": "Get a specific version of a schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-schema-registry-host/subjects/:subject/versions/:version",
+            "params": [
+              {
+                "name": "subject",
+                "value": "",
+                "type": "path",
+                "description": "The subject name"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "A schema version (numeric or \"latest\")"
+              }
+            ]
+          },
+          "docs": "Get a specific version of a schema"
+        },
+        {
+          "info": {
+            "name": "Delete a specific version of a schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-schema-registry-host/subjects/:subject/versions/:version",
+            "params": [
+              {
+                "name": "subject",
+                "value": "",
+                "type": "path",
+                "description": "The subject name"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "A schema version (numeric or \"latest\")"
+              }
+            ]
+          },
+          "docs": "Delete a specific version of a schema"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
