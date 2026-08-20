@@ -58,6 +58,11 @@ apis:
   baseURL: https://registry.example.com/apis/registry/v2
   tags:
   - Schema Registry
+  - Open-Source
+  - Avro
+  - Compatibility
+  tags_raw:
+  - Schema Registry
   - Open Source
   - Avro
   - Compatibility
@@ -106,6 +111,8 @@ apis:
   humanURL: https://docs.confluent.io/platform/current/schema-registry/develop/api.html
   baseURL: https://your-schema-registry-host/
   tags:
+  - Context
+  tags_raw:
   - Contexts
   properties:
   - type: OpenAPI
