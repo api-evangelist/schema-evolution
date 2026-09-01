@@ -124,7 +124,7 @@ apis:
   humanURL: https://docs.confluent.io/platform/current/schema-registry/develop/api.html
   baseURL: https://your-schema-registry-host/
   tags:
-  - Contexts
+  - Context
   tags_raw:
   - Contexts
   properties:
