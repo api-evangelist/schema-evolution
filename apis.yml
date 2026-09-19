@@ -177,6 +177,8 @@ apis:
   humanURL: https://docs.confluent.io/platform/current/schema-registry/develop/api.html
   baseURL: https://your-schema-registry-host/
   tags:
+  - Schema
+  tags_raw:
   - Schemas
   properties:
   - type: OpenAPI
