@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Confluent Schema Registry Compatibility API
   description: Minimal OpenAPI description of the Confluent Schema Registry REST API used for schema evolution.
@@ -28,6 +28,8 @@ paths:
             application/vnd.schemaregistry.v1+json:
               schema:
                 $ref: '#/components/schemas/CompatibilityResult'
+      operationId: postCompatibilitySubjectsBySubjectVersionsByVersion
+      x-operation-id-source: derived
   /compatibility/subjects/{subject}/versions:
     parameters:
     - $ref: '#/components/parameters/Subject'
@@ -44,30 +46,9 @@ paths:
             application/vnd.schemaregistry.v1+json:
               schema:
                 $ref: '#/components/schemas/CompatibilityResult'
+      operationId: postCompatibilitySubjectsBySubjectVersions
+      x-operation-id-source: derived
 components:
-  requestBodies:
-    Schema:
-      description: Schema definition
-      required: true
-      content:
-        application/vnd.schemaregistry.v1+json:
-          schema:
-            $ref: '#/components/schemas/SchemaString'
-  parameters:
-    Subject:
-      name: subject
-      in: path
-      required: true
-      description: The subject name
-      schema:
-        type: string
-    Version:
-      name: version
-      in: path
-      required: true
-      description: A schema version (numeric or "latest")
-      schema:
-        type: string
   schemas:
     CompatibilityResult:
       type: object
@@ -89,3 +70,26 @@ components:
             type: object
             additionalProperties: true
       additionalProperties: true
+  requestBodies:
+    Schema:
+      description: Schema definition
+      required: true
+      content:
+        application/vnd.schemaregistry.v1+json:
+          schema:
+            $ref: '#/components/schemas/SchemaString'
+  parameters:
+    Version:
+      name: version
+      in: path
+      required: true
+      description: A schema version (numeric or "latest")
+      schema:
+        type: string
+    Subject:
+      name: subject
+      in: path
+      required: true
+      description: The subject name
+      schema:
+        type: string

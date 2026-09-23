@@ -1,13 +1,7 @@
 {
   "provider": "schema-evolution",
   "sources": [
-    "schema-evolution-compatibility-api-openapi.yml",
-    "schema-evolution-config-api-openapi.yml",
-    "schema-evolution-contexts-api-openapi.yml",
-    "schema-evolution-exporters-api-openapi.yml",
-    "schema-evolution-mode-api-openapi.yml",
-    "schema-evolution-schemas-api-openapi.yml",
-    "schema-evolution-subjects-api-openapi.yml"
+    "_ae-authored/schema-evolution-openapi.yml"
   ],
   "outputs": [
     "schema-evolution-compatibility-api-openapi.yml",
@@ -21,6 +15,18 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "schema-evolution-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "schema-evolution-compatibility-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "schema-evolution-config-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "schema-evolution-contexts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "schema-evolution-exporters-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "schema-evolution-mode-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "schema-evolution-schemas-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "schema-evolution-subjects-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

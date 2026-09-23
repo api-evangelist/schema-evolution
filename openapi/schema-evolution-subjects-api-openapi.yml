@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Confluent Schema Registry Compatibility Subjects API
+  title: Confluent Schema Registry Subjects API
   description: Minimal OpenAPI description of the Confluent Schema Registry REST API used for schema evolution.
   version: 1.0.0
   x-generated-from: https://docs.confluent.io/platform/current/schema-registry/develop/api.html
@@ -25,6 +25,8 @@ paths:
                 type: array
                 items:
                   type: string
+      operationId: getSubjects
+      x-operation-id-source: derived
   /subjects/{subject}:
     parameters:
     - $ref: '#/components/parameters/Subject'
@@ -41,6 +43,8 @@ paths:
             application/vnd.schemaregistry.v1+json:
               schema:
                 $ref: '#/components/schemas/SchemaMetadata'
+      operationId: postSubjectsBySubject
+      x-operation-id-source: derived
     delete:
       tags:
       - Subjects
@@ -54,6 +58,8 @@ paths:
                 type: array
                 items:
                   type: integer
+      operationId: deleteSubjectsBySubject
+      x-operation-id-source: derived
   /subjects/{subject}/versions:
     parameters:
     - $ref: '#/components/parameters/Subject'
@@ -70,6 +76,8 @@ paths:
                 type: array
                 items:
                   type: integer
+      operationId: getSubjectsBySubjectVersions
+      x-operation-id-source: derived
     post:
       tags:
       - Subjects
@@ -83,6 +91,8 @@ paths:
             application/vnd.schemaregistry.v1+json:
               schema:
                 $ref: '#/components/schemas/SchemaId'
+      operationId: postSubjectsBySubjectVersions
+      x-operation-id-source: derived
   /subjects/{subject}/versions/{version}:
     parameters:
     - $ref: '#/components/parameters/Subject'
@@ -98,6 +108,8 @@ paths:
             application/vnd.schemaregistry.v1+json:
               schema:
                 $ref: '#/components/schemas/SchemaMetadata'
+      operationId: getSubjectsBySubjectVersionsByVersion
+      x-operation-id-source: derived
     delete:
       tags:
       - Subjects
@@ -109,15 +121,9 @@ paths:
             application/vnd.schemaregistry.v1+json:
               schema:
                 type: integer
+      operationId: deleteSubjectsBySubjectVersionsByVersion
+      x-operation-id-source: derived
 components:
-  requestBodies:
-    Schema:
-      description: Schema definition
-      required: true
-      content:
-        application/vnd.schemaregistry.v1+json:
-          schema:
-            $ref: '#/components/schemas/SchemaString'
   schemas:
     SchemaMetadata:
       type: object
@@ -153,18 +159,26 @@ components:
             type: object
             additionalProperties: true
       additionalProperties: true
-  parameters:
-    Subject:
-      name: subject
-      in: path
+  requestBodies:
+    Schema:
+      description: Schema definition
       required: true
-      description: The subject name
-      schema:
-        type: string
+      content:
+        application/vnd.schemaregistry.v1+json:
+          schema:
+            $ref: '#/components/schemas/SchemaString'
+  parameters:
     Version:
       name: version
       in: path
       required: true
       description: A schema version (numeric or "latest")
+      schema:
+        type: string
+    Subject:
+      name: subject
+      in: path
+      required: true
+      description: The subject name
       schema:
         type: string

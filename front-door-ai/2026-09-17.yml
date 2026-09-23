@@ -1,0 +1,35 @@
+# Front Door AI Index — schema-evolution — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: schema-evolution
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: docs.confluent.io
+  final_host: docs.confluent.io
+  ownership: own
+  owner: schema-evolution
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 22
+  host_score: 22
+  density: 12.98
+  words: 1695
+  tiers:
+    agentic: 10
+    core: 12
+    model: 0
+  ambiguous: 6
+  top_terms:
+    AI: 10
+    agent: 4
+    AI agent: 2
+    AI assistant: 2
+    MCP: 2
+    embedding: 2
+    intelligence: 2
+    ML: 1
+    inference: 1
+    machine learning: 1
+    model context protocol: 1
