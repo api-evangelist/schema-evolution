@@ -71,7 +71,7 @@ apis:
   baseURL: https://registry.example.com/apis/registry/v2
   tags:
   - Schema Registry
-  - Open-Source
+  - Open Source
   - Avro
   - Compatibility
   tags_raw:
@@ -79,6 +79,7 @@ apis:
   - Open Source
   - Avro
   - Compatibility
+  - Open-Source
   properties:
   - type: Documentation
     url: https://www.apicur.io/registry/
@@ -99,8 +100,6 @@ apis:
   - type: Reference
     url: >-
       https://docs.confluent.io/platform/current/schema-registry/fundamentals/schema-evolution.html
-  - type: GraphQL
-    url: graphql/schema-evolution-graphql.md
 - aid: schema-evolution:schema-evolution-config-api
   name: Schema Evolution Config API
   description: The Config API from Schema Evolution — 2 operation(s) for config.
@@ -116,8 +115,6 @@ apis:
   - type: Reference
     url: >-
       https://docs.confluent.io/platform/current/schema-registry/fundamentals/schema-evolution.html
-  - type: GraphQL
-    url: graphql/schema-evolution-graphql.md
 - aid: schema-evolution:schema-evolution-contexts-api
   name: Schema Evolution Contexts API
   description: The Contexts API from Schema Evolution — 1 operation(s) for contexts.
@@ -135,8 +132,6 @@ apis:
   - type: Reference
     url: >-
       https://docs.confluent.io/platform/current/schema-registry/fundamentals/schema-evolution.html
-  - type: GraphQL
-    url: graphql/schema-evolution-graphql.md
 - aid: schema-evolution:schema-evolution-exporters-api
   name: Schema Evolution Exporters API
   description: The Exporters API from Schema Evolution — 1 operation(s) for exporters.
@@ -152,8 +147,6 @@ apis:
   - type: Reference
     url: >-
       https://docs.confluent.io/platform/current/schema-registry/fundamentals/schema-evolution.html
-  - type: GraphQL
-    url: graphql/schema-evolution-graphql.md
 - aid: schema-evolution:schema-evolution-mode-api
   name: Schema Evolution Mode API
   description: The Mode API from Schema Evolution — 1 operation(s) for mode.
@@ -169,8 +162,6 @@ apis:
   - type: Reference
     url: >-
       https://docs.confluent.io/platform/current/schema-registry/fundamentals/schema-evolution.html
-  - type: GraphQL
-    url: graphql/schema-evolution-graphql.md
 - aid: schema-evolution:schema-evolution-schemas-api
   name: Schema Evolution Schemas API
   description: The Schemas API from Schema Evolution — 2 operation(s) for schemas.
@@ -188,8 +179,6 @@ apis:
   - type: Reference
     url: >-
       https://docs.confluent.io/platform/current/schema-registry/fundamentals/schema-evolution.html
-  - type: GraphQL
-    url: graphql/schema-evolution-graphql.md
 - aid: schema-evolution:schema-evolution-subjects-api
   name: Schema Evolution Subjects API
   description: The Subjects API from Schema Evolution — 4 operation(s) for subjects.
@@ -205,8 +194,6 @@ apis:
   - type: Reference
     url: >-
       https://docs.confluent.io/platform/current/schema-registry/fundamentals/schema-evolution.html
-  - type: GraphQL
-    url: graphql/schema-evolution-graphql.md
 common:
 - type: IssueTracker
   url: https://github.com/Apicurio/apicurio-registry/issues
